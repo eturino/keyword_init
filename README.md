@@ -2,6 +2,11 @@
 
 Gem that provides a keyword argument based `initialize` method to a class, executing the setter of all the recognised keywords.
 
+[![Gem Version](https://badge.fury.io/rb/keyword_init.svg)](http://badge.fury.io/rb/keyword_init)
+[![Build Status](https://travis-ci.org/eturino/keyword_init.svg?branch=master)](https://travis-ci.org/eturino/keyword_init)
+[![Code Climate](https://codeclimate.com/github/eturino/keyword_init.png)](https://codeclimate.com/github/eturino/keyword_init)
+[![Code Climate Coverage](https://codeclimate.com/github/eturino/keyword_init/coverage.png)](https://codeclimate.com/github/eturino/keyword_init)
+
 ## Installation
 
 Add this line to your application's Gemfile:
