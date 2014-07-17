@@ -1,6 +1,6 @@
 # KeywordInit
 
-Gem that provides a keyword argument based initialize method to a class, executing the setter of all the recognised keywords.
+Gem that provides a keyword argument based `initialize` method to a class, executing the setter of all the recognised keywords.
 
 ## Installation
 
@@ -46,6 +46,10 @@ x.readonly # => nil
 x.my_data # => {attrib: 1, writeonly: 2, readonly: nil}
 ```
 
+## TODO
+
+1. "strict" to raise an error if an unrecognised option is called on method creation (keyword without a setter)
+2. "direct" integration with `fluent_accessors` ? 
 
 ## Contributing
 
