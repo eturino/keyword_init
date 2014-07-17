@@ -45,7 +45,7 @@ end
 o = TestKlass.new attrib: 1, writeonly: 2, readonly: 3
 x.attrib # => 1
 
-# did not set the value because there are no `readonly=` method 
+# did not set the value because there is no `readonly=` method 
 x.readonly # => nil
 
 x.my_data # => {attrib: 1, writeonly: 2, readonly: nil}
