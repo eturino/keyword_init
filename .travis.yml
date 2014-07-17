@@ -4,6 +4,10 @@ cache: bundler
 rvm:
   - 2.1.1
 
+addons:
+  code_climate:
+    repo_token: 9d7b49edac4909edf2e78624b9c0589e15bf2573e5fc2c3d9e79f4994ffcc411
+
 script: 'bundle exec rake spec'
 
 notifications:
