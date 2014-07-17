@@ -1,6 +1,6 @@
 # KeywordInit
 
-TODO: Write a gem description
+Gem that provides a keyword argument based initialize method to a class, executing the setter of all the recognised keywords.
 
 ## Installation
 
@@ -18,7 +18,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can have the basic keyword initialization in your class, by including the `KeywordInit` module in your class. This will include the `initialize` method in the class.
+
+For each keyword that the `initialize` method receives, it will execute the setter if that method exists (it will look for a method called `keyword_name=`). 
+
+It will ignore all keywords that don't have a valid setter.
+
+```ruby
+class TestKlass
+  include KeywordInit
+  
+  attr_accessor :attrib
+  attr_writer :writeonly
+  attr_reader :readonly
+  
+  def my_data
+    {attrib: attrib, writeonly: writeonly, readonly: readonly}
+  end
+end
+
+o = TestKlass.new attrib: 1, writeonly: 2, readonly: 3
+x.attrib # => 1
+
+# did not set the value because there are no `readonly=` method 
+x.readonly # => nil
+
+x.my_data # => {attrib: 1, writeonly: 2, readonly: nil}
+```
+
 
 ## Contributing
 

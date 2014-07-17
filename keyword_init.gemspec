@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = KeywordInit::VERSION
   spec.authors       = ["Eduardo Turiño"]
   spec.email         = ["eturino@eturino.com"]
-  spec.summary       = %q{Gem that provides macros to add properties to a class: it will create attr_accessors and also allow to pass them on object creation using keyword arguments}
+  spec.summary       = %q{Gem that provides a keyword argument based initialize method to a class, executing the setter of all the recognised keywords.}
   # spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
   spec.license       = "MIT"
