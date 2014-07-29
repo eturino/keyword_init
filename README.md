@@ -21,6 +21,10 @@ Or install it yourself as:
 
     $ gem install keyword_init
 
+## Changelog
+
+v1.2.0 => now works with private setters
+
 ## Usage
 
 You can have the basic keyword initialization in your class, by including the `KeywordInit` module in your class. This will include the `initialize` method in the class.
