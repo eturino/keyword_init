@@ -23,6 +23,7 @@ Or install it yourself as:
 
 ## Changelog
 
+v1.3.0 => the work is done by a private method `_set_properties` that expects a hash of attributes. This way the work can be performed on an existing instance by calling that private method.
 v1.2.0 => now works with private setters
 
 ## Usage
