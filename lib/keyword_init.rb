@@ -2,7 +2,7 @@ require "keyword_init/version"
 
 module KeywordInit
   def initialize(properties = {})
-    _set_properties properties
+    _set_properties(properties || {})
   end
 
   private
