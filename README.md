@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Changelog
 
-### v1.3.1
+### v1.4.0 (renamed from v1.3.1)
 supports passing `nil` to both initializer and `_set_properties`
 
 ### v1.3.0 
