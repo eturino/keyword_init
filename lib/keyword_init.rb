@@ -7,6 +7,7 @@ module KeywordInit
 
   private
   def _set_properties(properties)
+    return unless properties
     properties.each do |k, v|
       normal_setter = "#{k}="
       send normal_setter, v if respond_to? normal_setter, true

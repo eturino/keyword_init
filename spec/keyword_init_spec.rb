@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.shared_examples "works" do
   let(:expected_data) { {:attrib => 1, :writeonly => 2, :readonly => nil} }
+  let(:empty_data) { {:attrib => nil, :writeonly => nil, :readonly => nil} }
 
   context '#initialize method' do
     it 'accepts keyword parameters' do
@@ -18,6 +19,11 @@ RSpec.shared_examples "works" do
       a = described_class.new :attrib => 1, :writeonly => 2, :readonly => 3
       expect(a.my_data).to eq expected_data
     end
+
+    it 'does nothing if nil passed' do
+      a = described_class.new nil
+      expect(a.my_data).to eq empty_data
+    end
   end
 
   context '#_set_properties method (private)' do
@@ -26,6 +32,11 @@ RSpec.shared_examples "works" do
     it 'sets the correct values (after creation) in the subject, in the same way of the initialize method' do
       subject.send :_set_properties, :attrib => 1, :writeonly => 2, :readonly => 3
       expect(subject.my_data).to eq expected_data
+    end
+
+    it 'does nothing if nil passed' do
+      subject.send :_set_properties, nil
+      expect(subject.my_data).to eq empty_data
     end
   end
 end
