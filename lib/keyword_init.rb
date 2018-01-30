@@ -2,7 +2,8 @@ require "keyword_init/version"
 
 module KeywordInit
   def self.included(mod)
-    mod.include Relaxed
+    # if using the general KeywordInit module, use the Relaxed
+    mod.send(:include, Relaxed)
   end
 
   module Common
