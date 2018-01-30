@@ -17,7 +17,7 @@ module KeywordInit
 
   module Relaxed
     def self.included(mod)
-      mod.include Common
+      mod.send(:include, Common)
     end
 
     private
@@ -32,7 +32,7 @@ module KeywordInit
 
   module Strict
     def self.included(mod)
-      mod.include Common
+      mod.send(:include, Common)
     end
 
     private
