@@ -78,7 +78,7 @@ RSpec.describe KeywordInit do
           expect { described_class.new :attrib => 1, :writeonly => 2 }.not_to raise_error
         end
 
-        it 'accepts keyword parameters (fails if it receives read-only attributes or any given attribute with no setter)' do
+        it 'accepts keyword parameters (raises KeywordInit::KeyError if it receives read-only attributes or any given attribute with no setter)' do
           expect { described_class.new :attrib => 1, :writeonly => 2, :readonly => 3 }.to raise_exception(KeywordInit::KeyError)
           expect { described_class.new :attrib => 1, :writeonly => 2, :blaaah => 3 }.to raise_exception(KeywordInit::KeyError)
         end
