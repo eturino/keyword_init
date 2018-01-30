@@ -21,17 +21,6 @@ Or install it yourself as:
 
     $ gem install keyword_init
 
-## Changelog
-
-### v1.4.0 (renamed from v1.3.1)
-supports passing `nil` to both initializer and `_set_properties`
-
-### v1.3.0 
-the work is done by a private method `_set_properties` that expects a hash of attributes. This way the work can be performed on an existing instance by calling that private method.
-
-### 1.2.0 
-now works with private setters
-
 ## Usage
 
 You can have the basic keyword initialization in your class, by including the `KeywordInit` module in your class. This will include the `initialize` method in the class.
@@ -53,19 +42,60 @@ class TestKlass
   end
 end
 
-o = TestKlass.new attrib: 1, writeonly: 2, readonly: 3
+x = TestKlass.new attrib: 1, writeonly: 2, readonly: 3
 x.attrib # => 1
-
 # did not set the value because there is no `readonly=` method 
 x.readonly # => nil
 
 x.my_data # => {attrib: 1, writeonly: 2, readonly: nil}
 ```
 
+### Strict mode
+
+if we include `KeywordInit::Strict` instead of `KeywordInit` or `KeywordInit::Relaxed`, when the initializer receives a key with no matching setter, it will raise a `KeywordInit::KeyError` exception.
+
+```ruby
+class TestKlass
+  include KeywordInit
+  
+  attr_accessor :attrib
+  attr_writer :writeonly
+  attr_reader :readonly
+  
+  def my_data
+    {attrib: attrib, writeonly: writeonly, readonly: readonly}
+  end
+end
+
+good = TestKlass.new attrib: 1, writeonly: 2
+good.attrib # => 1
+good.my_data # => {attrib: 1, writeonly: 2, readonly: nil}
+
+bad =  TestKlass.new attrib: 1, writeonly: 2, readonly: 4
+  # => raises KeywordInit::KeyError
+ #
+bad2 =  TestKlass.new attrib: 1, writeonly: 2, unknown: 4
+  # => raises KeywordInit::KeyError 
+```
+
+
+## Changelog
+
+### v1.5.0
+supports **strict** mode.
+
+### v1.4.0 (renamed from v1.3.1)
+supports passing `nil` to both initializer and `_set_properties`
+
+### v1.3.0 
+the work is done by a private method `_set_properties` that expects a hash of attributes. This way the work can be performed on an existing instance by calling that private method.
+
+### 1.2.0 
+now works with private setters
+
 ## TODO
 
-1. "strict" to raise an error if an unrecognised option is called on method creation (keyword without a setter)
-2. "direct" integration with `fluent_accessors` ? 
+1. "direct" integration with `fluent_accessors` ? 
 
 ## Contributing
 
